@@ -1,6 +1,6 @@
 # SimpleBlog
 
-- Clone project: `git clone https://github.com/sangnguyenplus/simpleblog.git blog`;
+- Clone project: `git clone https://github.com/sangnguyenplus/simpleblog.git blog`
 - cd vào thư mục blog.
 - `npm install`
 - `bower install`
