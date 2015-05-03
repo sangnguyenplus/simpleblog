@@ -48,7 +48,7 @@ angular.module('UserService', [])
             if (rejection !== null && rejection.status === 401 && ($window.sessionStorage.token || AuthenticationService.isAuthenticated)) {
                 delete $window.sessionStorage.token;
                 AuthenticationService.isAuthenticated = false;
-                $location.path("/");
+                $location.path("/login");
             }
 
             return $q.reject(rejection);
