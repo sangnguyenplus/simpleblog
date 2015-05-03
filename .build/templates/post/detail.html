@@ -1,0 +1,55 @@
+<div class="post-detail thumbnail">
+    <h1 class="post-title" ng-bind="post.title"></h1>
+    <div class="post-info">
+        <span class="author">
+        <i class="fa fa-user"></i>
+        Bởi:
+        <a href="#" ng-bind="post.userId.displayName"></a>
+        </span>
+        <span class="create-time">
+        <i class="fa fa-calendar"></i> <span ng-bind="post.creationDate | fromNow"></span>
+        </span>
+    </div>
+    <div class="post-content text-justify" ng-bind-html="post.content | unsafe">
+    </div>
+    <br>
+    <div ng-if="currentUser.role=='admin' || currentUser._id==post.userId._id">
+        <md-button class="md-raised md-primary" ui-sref="edit_post({id: post._id})" style="display: inline-block; float: left;"><i class="fa fa-edit"></i> Sửa</md-button>
+        <md-button class="md-raised md-warn" ng-click="deletePost(post._id)"><i class="fa fa-trash-o"></i> Xóa</md-button>
+    </div>
+    <br><br>
+    <div id="comments">
+        <h2 class="comment-header">Bình luận : </h2>
+        <div class="alert alert-success" ng-hide="currentUser">Hãy đăng nhập để sử dụng chức năng bình luận.</div>
+        <!--Comment form-->
+        <div class="comment-form" ng-show="currentUser">
+            <form id="comment_form" name="form" method="POST" ng-submit="addComment()" >
+                <div class="form-group">
+                    <textarea  rows="4"  class="form-control" name="comment" ng-model="comment.content" placeholder="Nội dung bình luận"></textarea>
+                </div>
+                <div class="form-group">
+                <md-button id="submit" type="submit" class="md-raised md-primary">Gửi bình luận</md-button>
+                </div>
+            </form>
+        </div>
+        <!--End comment form-->
+        <div class="comments-body">
+            <div class="list-group" ng-repeat="c in comments" style="box-shadow: none;">
+                <div class="comment list-group-item clearfix">
+                    <div class="row">
+                        <div class="col-xs-1">
+                            <a href="#"><img src="{{c.userId.avatar}}" alt="{{c.userId.displayName}}"></a>
+                        </div>
+                        <div class="col-xs-11">
+                            <div>
+                                <a href="#" ng-bind="c.userId.displayName"></a>
+                                <small><i class="fa fa-calendar"></i> <span ng-bind="c.creationDate | fromNow"></span></small>
+                            </div>
+                            <div ng-bind="c.content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

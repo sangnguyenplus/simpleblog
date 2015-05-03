@@ -1,0 +1,44 @@
+<div class="post-detail thumbnail" id="create_post">
+	<div class="col-xs-8 col-xs-offset-2">
+		<form method="post" name="form" ng-submit="editPost()" novalidate>
+		<h2>Sửa bài viết</h2>
+		<input type="hidden" ng-model="post._id">
+		<div class="form-group">
+			 <md-input-container>
+	            <label>Tiêu đề</label>
+				<input type="text" name="title" ng-model="post.title" required  minlength="10" md-maxlength="120">
+				<div ng-messages="form.title.$error" ng-if="form.title.$dirty">
+                  <div ng-message="required">Tiêu đề không được bỏ trống</div>
+	              <div ng-message="minlength">Tiêu đề phải dài hơn 10 ký tự</div>
+	              <div ng-message="md-maxlength">Tiêu đề phải ngắn hơn 120 ký tự</div>
+                </div>
+			</md-input-container>
+		</div>
+		<div class="form-group">
+			 <md-input-container>
+	            <label>Mô tả ngắn</label>
+	            <textarea type="text" name="description" ng-model="post.description" required  minlength="25" md-maxlength="400"></textarea>
+				<div ng-messages="form.description.$error" ng-if="form.description.$dirty">
+                  <div ng-message="required">Mô tả ngắn không được bỏ trống</div>
+	              <div ng-message="minlength">Mô tả ngắn phải dài hơn 25 ký tự</div>
+	              <div ng-message="md-maxlength">Mô tả ngắn phải ngắn hơn 400 ký tự</div>
+                </div>
+			</md-input-container>
+		</div>
+		<div class="form-group">
+			 <md-input-container>
+	            <label>Nội dung</label>
+				<textarea name="content" id="content" rows="5" ng-model="post.content" required  minlength="25"></textarea>
+				<div ng-messages="form.content.$error" ng-if="form.content.$dirty">
+                  <div ng-message="required">Nội dung không được bỏ trống</div>
+	              <div ng-message="minlength">Nội dung phải dài hơn 25 ký tự</div>
+                </div>
+			</md-input-container>
+		</div>
+		<div class="form-group">
+			<md-button class="md-raised md-primary" type="submit" ng-disabled="!form.$dirty || (form.$dirty && form.$invalid)"><i class="fa fa-spinner fa-spin" ng-show="Proccess" ></i> Cập nhật</md-button>
+		</div>
+	</form>
+	</div>
+	<div class="clearfix"></div>
+</div>

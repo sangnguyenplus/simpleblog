@@ -1,0 +1,18 @@
+<div class="posts list-group">
+    <div class="post list-group-item" ng-repeat="p in post |filter: title">
+        <h1 class="text-justify"><a ui-sref="post_detail({id: p._id})">{{p.title}}</a></h1>
+        <div class="post-info">
+            <span class="author">
+            <i class="fa fa-user"></i>
+            Bởi:<a href="#" ng-bind="p.userId.displayName"></a>
+            </span>
+            <span class="create-time">
+                <i class="fa fa-calendar"></i> <span ng-bind="p.creationDate| fromNow"></span>
+            </span>
+        </div>
+        <div class="clearfix">
+            <p class="summary text-justify" ng-bind="p.description"></p>
+            <md-button class="md-raised md-primary" ui-sref="post_detail({id: p._id})">Đọc thêm <small><i class="fa fa-arrow-right"></i></small></md-button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="intro-content-wrapper">
+    <div class="form-signup-wrapper">
+        <div id="login" class="animate">
+            <h3 class="title">Đăng nhập hệ thống</h3>
+            <form class="form-horizontal" method="post" id="sign_in" name="form" ng-submit="login()" novalidate>
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <md-input-container>
+                            <label>Email</label>
+                            <input type="email" required name="email" ng-model="userData.email" autocomplete="off">
+                            <div ng-messages="form.email.$error" ng-if="form.email.$dirty">
+                              <div ng-message="required">Email không được bỏ trống</div>
+                              <div ng-message="email">Email không hợp lệ</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <md-input-container>
+                            <label>Mật khẩu</label>
+                            <input type="password" required name="password" ng-model="userData.password">
+                            <div ng-messages="form.password.$error" ng-if="form.password.$dirty">
+                              <div ng-message="required">Mật khẩu không được bỏ trống.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="form-group" style="padding:0 10px">
+                    <md-button class="md-raised md-primary" type="submit" ng-disabled="!form.$dirty || (form.$dirty && form.$invalid)"><i class="fa fa-spinner fa-spin" ng-show="Proccess" ></i> Đăng nhập</md-button>
+                    <a ui-sref="register">Tạo tài khoản mới</a>
+                </div>
+                <div class="form-group" style="padding:0 10px">
+                    <h4 class="title">Đăng nhập thông qua mạng xã hội</h4>
+                    <md-button class="md-raised md-primary" href="/auth/facebook" target='_self'><i class="fa fa-facebook" ></i> Tài khoản Facebook</md-button>
+                    <md-button class="md-warn md-raised md-hue-2" href="/auth/google" target='_self'><i class="fa fa-google-plus"></i> Tài khoản Google</md-button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
